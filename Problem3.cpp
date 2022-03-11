@@ -1,12 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <bits/stdc++.h>
+#include <string>
 using namespace std;
 
-#include <string>
-
-//vector <int> Z[15];
-
+//Compute Z value, same as given in class.
 vector <int> compute_z(string s)
 {
     int l(0), r(1), n(s.size());
@@ -34,87 +32,7 @@ vector <int> compute_z(string s)
     return z;
 }
 
-/* 
-// Fills Z array for given string str[]
-vector <int> getZarr(string str)
-{
-    int n = str.length();
-    vector <int> z (n,0);
-
-    int L, R, k;
- 
-    // [L,R] make a window which matches with prefix of s
-    L = R = 0;
-    for (int i = 1; i < n; ++i)
-    {
-        // if i>R nothing matches so we will calculate.
-        // Z[i] using naive way.
-        if (i > R)
-        {
-            L = R = i;
- 
-            // R-L = 0 in starting, so it will start
-            // checking from 0'th index. For example,
-            // for "ababab" and i = 1, the value of R
-            // remains 0 and Z[i] becomes 0. For string
-            // "aaaaaa" and i = 1, Z[i] and R become 5
-            while (R<n && str[R-L] == str[R])
-                R++;
-            Z[i] = R-L;
-            R--;
-        }
-        else
-        {
-            // k = i-L so k corresponds to number which
-            // matches in [L,R] interval.
-            k = i-L;
- 
-            // if Z[k] is less than remaining interval
-            // then Z[i] will be equal to Z[k].
-            // For example, str = "ababab", i = 3, R = 5
-            // and L = 2
-            if (Z[k] < R-i+1)
-                Z[i] = Z[k];
- 
-            // For example str = "aaaaaa" and i = 2, R is 5,
-            // L is 0
-            else
-            {
-                // else start from R and check manually
-                L = i;
-                while (R<n && str[R-L] == str[R])
-                    R++;
-                Z[i] = R-L;
-                R--;
-            }
-        }
-    }
-    return z;
-}
-*/
-/*
-vector <int> compute_longestPrefix(const string &s, const string &t)
-{
-	int size_s = s.size();
-	int size_type = t.size();
-    string test_1 = s;
-    string test_2 = t;
-	int total_size = size_s + size_type;
-	test_1.append(test_2);
-    vector <int> ans(total_size,0);
-	getZarr(test_1, Z);
-	for (int i = total_size - 1; i > 0; --i)
-	{
-		ans[i + Z[i] - 1] = Z[i];
-	}
-	return ans;
-}
-
-*/
-
-
-
-
+//Compute K' value, same as given in class.
 vector <int> compute_Kp(const string &s)
 {
     int n = s.size();
@@ -131,6 +49,7 @@ vector <int> compute_Kp(const string &s)
     return ans;
 }
 
+//Compute K value, same as given in class.
 vector <int> compute_K(string &s)
 {
     int n = s.size();
@@ -146,8 +65,7 @@ vector <int> compute_K(string &s)
     return ans;
 }
 
-
-//N value
+//Compute N value, same as given in class.
 vector <int> compute_N(const string & s)
 {
     int n = s.size();
@@ -164,9 +82,7 @@ vector <int> compute_N(const string & s)
     return ans;
 }
 
-
-
-//L' value
+//Compute L' value, same as given in class.
 vector <int> compute_Lp(const string & s)
 {
     int n = s.size();
@@ -181,7 +97,7 @@ vector <int> compute_Lp(const string & s)
     return ans;
 }
 
-//l'p value
+//Compute l' value, same as given in class.
 vector <int> compute_lp(const string & s)
 {
     int n = s.size();
@@ -206,6 +122,7 @@ vector <int> compute_lp(const string & s)
     return ans;
 }
 
+//Algorthim for Question #3 for Homework #9.
 string p3(string s)
 {
     vector <int> Z = compute_z(s);
@@ -239,20 +156,7 @@ string p3(string s)
     return "";
 }
 
-
-template <typename S>
-void using_index(const vector<S>& vector,
-                 string sep = " ")
-{
-    // Iterating vector by using index
-    for (int i = 0; i < vector.size(); i++) {
-        // Printing the element at
-        // index 'i' of vector
-        cout << vector[i] << sep;
-    }
-    cout << endl;
-}
-
+//Helper function to print out a Vector object.
 template<typename T, size_t n>
 void print_array(T const(& arr)[n])
 {
@@ -261,23 +165,14 @@ void print_array(T const(& arr)[n])
     }
 }
 
+//Main function
 int main()
 {
-    //compute_N(str);
-    //string str ("aaabbbaaabbbaaa");
-    string str ("abcdeabcdeabcde");
+    string str ("abcabcabc");
+
     vector <int> ans(str.size(),0);
     ans = compute_lp(str);
+
     string test = p3(str);
-    //using_index(ans);
-
     cout << test << endl;
-    
-    
-    //getZarr(str,Z);
-    //ans = compute_N(str);
-    //print_array(Z);
 }
-
-
-
