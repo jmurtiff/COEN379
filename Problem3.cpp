@@ -156,13 +156,18 @@ string p3(string s)
     return "";
 }
 
-//Helper function to print out a Vector object.
-template<typename T, size_t n>
-void print_array(T const(& arr)[n])
+//Helper function used to print out Vector Objects.
+template <typename S>
+void using_index(const vector<S>& vector,
+                 string sep = " ")
 {
-    for (size_t i = 0; i < n; i++) {
-        std::cout << arr[i] << ' ';
+    // Iterating vector by using index
+    for (int i = 0; i < vector.size(); i++) {
+        // Printing the element at
+        // index 'i' of vector
+        cout << vector[i] << sep;
     }
+    cout << endl;
 }
 
 //Main function
@@ -171,7 +176,9 @@ int main()
     string str ("abcabcabc");
 
     vector <int> ans(str.size(),0);
-    ans = compute_lp(str);
+    //ans = compute_lp(str);
+    ans = compute_z(str);
+    using_index(ans);
 
     string test = p3(str);
     cout << test << endl;
