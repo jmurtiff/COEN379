@@ -122,7 +122,7 @@ vector <int> compute_lp(const string & s)
     return ans;
 }
 
-//Algorthim for Question #3 for Homework #9.
+//Algorithim for Question #3 for Homework #9.
 string p3(string s)
 {
     vector <int> Z = compute_z(s);
@@ -173,7 +173,7 @@ void using_index(const vector<S>& vector,
 //Main function
 int main()
 {
-    string str ("abcabcabc");
+    string str ("abcabcabcd");
 
     vector <int> ans(str.size(),0);
     //ans = compute_lp(str);
